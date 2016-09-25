@@ -1,4 +1,4 @@
-package ntou.soselab.easylearn.model.json.request;
+package soselab.easylearn.json.request;
 
 
 public class AuthenticationRequest{
@@ -31,5 +31,13 @@ public class AuthenticationRequest{
 
 	public void setToken(String token) {
 		this.token = token;
+	}
+
+	@Override
+	public String toString() {
+		return "AuthenticationRequest{" +
+				"id='" + id + '\'' +
+				", token='" + token + '\'' +
+				'}';
 	}
 }

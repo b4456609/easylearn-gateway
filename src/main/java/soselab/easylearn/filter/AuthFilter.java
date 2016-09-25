@@ -1,20 +1,17 @@
-package ntou.soselab.easylearn.filter;
+package soselab.easylearn.filter;
 
-import java.io.IOException;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.netflix.zuul.ZuulFilter;
+import com.netflix.zuul.context.RequestContext;
+import soselab.easylearn.entity.User;
+import soselab.easylearn.repository.UserRepository;
+import soselab.easylearn.security.TokenUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
-import com.netflix.zuul.ZuulFilter;
-import com.netflix.zuul.context.RequestContext;
-
-import ntou.soselab.easylearn.domain.entity.User;
-import ntou.soselab.easylearn.repository.UserRepository;
-import ntou.soselab.easylearn.security.TokenUtils;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 public class AuthFilter extends ZuulFilter {
 	
@@ -34,6 +31,9 @@ public class AuthFilter extends ZuulFilter {
 		HttpServletRequest request = RequestContext.getCurrentContext().getRequest();
 		String path = request.getRequestURI().substring(request.getContextPath().length());
 		logger.info(path);
+
+		if(path.startsWith("/easylearn/"))
+			return false;
 				
 		return true;
 	}

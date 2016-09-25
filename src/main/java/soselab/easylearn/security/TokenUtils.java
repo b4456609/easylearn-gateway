@@ -1,16 +1,14 @@
-package ntou.soselab.easylearn.security;
+package soselab.easylearn.security;
 
 import io.jsonwebtoken.*;
-import ntou.soselab.easylearn.domain.entity.User;
+import soselab.easylearn.entity.User;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
-import org.apache.log4j.Logger;
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 @Component
 public class TokenUtils {
@@ -104,7 +102,7 @@ public class TokenUtils {
 
 	private String generateToken(Map<String, Object> claims) {
 		return Jwts.builder().setClaims(claims).setExpiration(this.generateExpirationDate())
-				.signWith(SignatureAlgorithm.HS512, this.secret).compact();
+				.signWith(SignatureAlgorithm.HS256, this.secret).compact();
 	}
 
 	public String refreshToken(String token) {

@@ -1,7 +1,7 @@
-package ntou.soselab.easylearn.repository;
+package soselab.easylearn.repository;
 
 
-import ntou.soselab.easylearn.domain.entity.User;
+import soselab.easylearn.entity.User;
 
 public interface UserRepository {
 

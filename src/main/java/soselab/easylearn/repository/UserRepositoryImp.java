@@ -1,12 +1,11 @@
-package ntou.soselab.easylearn.repository;
+package soselab.easylearn.repository;
 
-import java.util.HashMap;
-
-import java.util.Map;
-
+import soselab.easylearn.entity.User;
 import org.springframework.stereotype.Component;
 
-import ntou.soselab.easylearn.domain.entity.User;
+import java.util.HashMap;
+import java.util.Map;
+
 @Component
 public class UserRepositoryImp implements UserRepository {
 	

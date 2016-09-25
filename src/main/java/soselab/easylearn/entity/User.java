@@ -1,4 +1,4 @@
-package ntou.soselab.easylearn.domain.entity;
+package soselab.easylearn.entity;
 
 public class User {
 

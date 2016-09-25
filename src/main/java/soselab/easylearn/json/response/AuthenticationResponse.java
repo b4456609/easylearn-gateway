@@ -1,4 +1,4 @@
-package ntou.soselab.easylearn.model.json.response;
+package soselab.easylearn.json.response;
 
 
 public class AuthenticationResponse {

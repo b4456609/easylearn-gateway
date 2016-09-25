@@ -1,4 +1,4 @@
-package ntou.soselab.easylearn;
+package soselab.easylearn;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,22 +7,21 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+import soselab.easylearn.filter.AuthFilter;
 
-import ntou.soselab.easylearn.filter.AuthFilter;
-
-@EnableZuulProxy
 @SpringBootApplication
-public class GatewayApplication {
+@EnableZuulProxy
+public class EdgeApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GatewayApplication.class, args);
+		SpringApplication.run(EdgeApplication.class, args);
 	}
 
 	@Bean
 	public AuthFilter authFilter() {
 		return new AuthFilter();
 	}
-	
+
 	@Bean
 	public CorsFilter corsFilter() {
 	    final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -40,5 +39,4 @@ public class GatewayApplication {
 	    source.registerCorsConfiguration("/**", config);
 	    return new CorsFilter(source);
 	}
-
 }

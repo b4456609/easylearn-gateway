@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: easylearn-edge
+server:
+  port: 8080
+zuul:
+  routes:
+      user:
+        path: /api/user/**
+        serviceId: easylearn-user
+
+cerberus:
+  token:
+    header: X-Auth-Token
+    secret: sssshhhh!
+    expiration: 604800
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
