@@ -16,6 +16,8 @@ cerberus:
     expiration: 604800
 
 eureka:
+  instance:
+    preferIpAddress: true
   client:
     serviceUrl:
       defaultZone: http://discovery:8761/eureka/
