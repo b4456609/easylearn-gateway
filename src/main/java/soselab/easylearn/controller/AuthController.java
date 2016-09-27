@@ -39,7 +39,7 @@ public class AuthController {
         ResponseEntity<FBReponse> response = restTemplate.getForEntity(
                 "https://graph.facebook.com/me?access_token="+authenticationRequest.getToken(),
                 FBReponse.class);
-        logger.info("FB not response status code: " + response.getStatusCodeValue());
+        logger.info("FB not response status code: " + response.getStatusCode().value());
 
         if(!response.getStatusCode().is2xxSuccessful()){
             return ResponseEntity.unprocessableEntity().body("FB request fail");

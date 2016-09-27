@@ -54,7 +54,7 @@ public class AuthFilter extends ZuulFilter {
 				e.printStackTrace();
 			}			
 		}
-		
+		RequestContext.getCurrentContext().addZuulRequestHeader("user-id", id);
 		logger.info(String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
 		logger.info(user.toString());
 		
