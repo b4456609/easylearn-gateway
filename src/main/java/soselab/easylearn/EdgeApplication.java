@@ -16,11 +16,11 @@ public class EdgeApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(EdgeApplication.class, args);
 	}
-
-	@Bean
-	public AuthFilter authFilter() {
-		return new AuthFilter();
-	}
+//
+//	@Bean
+//	public AuthFilter authFilter() {
+//		return new AuthFilter();
+//	}
 
 	@Bean
 	public CorsFilter corsFilter() {
