@@ -6,7 +6,7 @@
         </filter>
         <file>./log/gateway.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>user.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <FileNamePattern>gateway.%d{yyyy-MM-dd}.log</FileNamePattern>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
         <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
