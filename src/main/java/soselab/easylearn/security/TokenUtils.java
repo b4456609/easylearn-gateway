@@ -6,7 +6,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import soselab.easylearn.entity.User;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -32,7 +31,7 @@ public class TokenUtils {
         String id;
         try {
             final Claims claims = this.getClaimsFromToken(token);
-            id = claims.getSubject();
+            id = claims.get("id", String.class);
         } catch (Exception e) {
             id = null;
         }
@@ -95,9 +94,9 @@ public class TokenUtils {
         return expiration.before(this.generateCurrentDate());
     }
 
-    public String generateToken(User user) {
+    public String generateToken(String id) {
         Map<String, Object> claims = new HashMap<String, Object>();
-        claims.put("sub", user.getId());
+        claims.put("sub", id);
         claims.put("created", this.generateCurrentDate());
         return this.generateToken(claims);
     }
@@ -119,9 +118,9 @@ public class TokenUtils {
         return refreshedToken;
     }
 
-    public Boolean validateToken(String token, User user) {
+    public Boolean validateToken(String token, String userId) {
         final String id = this.getUserIdFromToken(token);
-        return (id.equals(user.getId()) && !(this.isTokenExpired(token)));
+        return (id.equals(userId) && !(this.isTokenExpired(token)));
     }
 
 }
