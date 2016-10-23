@@ -2,7 +2,6 @@ package soselab.easylearn.filter;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
-import com.sun.xml.internal.ws.client.ResponseContext;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -40,7 +39,7 @@ public class AuthFilter extends ZuulFilter {
         HttpServletRequest request = RequestContext.getCurrentContext().getRequest();
         String token = request.getHeader(this.tokenHeader);
         String id = this.tokenUtils.getUserIdFromToken(token);
-        if(id==null){
+        if (id == null) {
             try {
                 RequestContext.getCurrentContext().getResponse().sendError(HttpServletResponse.SC_UNAUTHORIZED);
             } catch (IOException e) {

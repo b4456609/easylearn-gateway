@@ -31,7 +31,7 @@ public class AuthController {
             return ResponseEntity.badRequest().build();
 
         boolean isAuth = fbClient.isAuth(authenticationRequest.getToken(), authenticationRequest.getId());
-        if (isAuth){
+        if (isAuth) {
             String token = this.tokenUtils.generateToken(authenticationRequest.getId());
             return ResponseEntity.ok(new AuthenticationResponse(token));
         }

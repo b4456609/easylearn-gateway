@@ -7,9 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.assertj.core.api.Java6Assertions.*;
-
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Java6Assertions.assertThat;
 
 
 @RunWith(SpringRunner.class)
