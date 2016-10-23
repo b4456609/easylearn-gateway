@@ -18,6 +18,10 @@ public class AuthFilter extends ZuulFilter {
     @Value("${cerberus.token.header}")
     private String tokenHeader;
 
+
+    @Value("${easylearn.testing}")
+    private boolean isTesting;
+
     @Autowired
     private TokenUtils tokenUtils;
 
@@ -27,8 +31,10 @@ public class AuthFilter extends ZuulFilter {
         String path = request.getRequestURI().substring(request.getContextPath().length());
         logger.info(path);
 
-        if (path.startsWith("/easylearn/"))
+        if (isTesting){
+            RequestContext.getCurrentContext().addZuulRequestHeader("user-id", "id");
             return false;
+        }
 
         return true;
     }

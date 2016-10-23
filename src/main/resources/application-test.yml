@@ -19,7 +19,7 @@ cerberus:
     expiration: 604800
 
 easylearn:
-  testing: false
+  testing: true
 
 eureka:
   instance:
