@@ -8,6 +8,9 @@ zuul:
       user:
         path: /api/user/**
         serviceId: easylearn-user
+      pack:
+        path: /api/pack/**
+        serviceId: easylearn-pack
 
 cerberus:
   token:
