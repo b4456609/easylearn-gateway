@@ -1,43 +1,43 @@
 package soselab.easylearn.json.request;
 
 
-public class AuthenticationRequest{
+public class AuthenticationRequest {
 
-	private static final long serialVersionUID = 6624726180748515507L;
-	private String id;
-	private String token;
+    private static final long serialVersionUID = 6624726180748515507L;
+    private String id;
+    private String token;
 
-	public AuthenticationRequest() {
-		super();
-	}
+    public AuthenticationRequest() {
+        super();
+    }
 
-	public AuthenticationRequest(String userId, String token) {
-		super();
-		this.id = userId;
-		this.token = token;
-	}
-	
-	public String getId() {
-		return id;
-	}
+    public AuthenticationRequest(String userId, String token) {
+        super();
+        this.id = userId;
+        this.token = token;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public String getToken() {
-		return token;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public void setToken(String token) {
-		this.token = token;
-	}
+    public String getToken() {
+        return token;
+    }
 
-	@Override
-	public String toString() {
-		return "AuthenticationRequest{" +
-				"id='" + id + '\'' +
-				", token='" + token + '\'' +
-				'}';
-	}
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    @Override
+    public String toString() {
+        return "AuthenticationRequest{" +
+                "id='" + id + '\'' +
+                ", token='" + token + '\'' +
+                '}';
+    }
 }

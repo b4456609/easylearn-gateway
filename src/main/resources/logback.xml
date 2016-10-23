@@ -9,11 +9,11 @@
             <FileNamePattern>gateway.%d{yyyy-MM-dd}.log</FileNamePattern>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
-        <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
     </appender>
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
 
     <root level="INFO">
-        <appender-ref ref="stash" />
+        <appender-ref ref="stash"/>
     </root>
 </configuration>
