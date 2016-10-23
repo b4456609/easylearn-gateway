@@ -4,7 +4,6 @@ import org.apache.log4j.Logger;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import soselab.easylearn.entity.User;
 import soselab.easylearn.json.response.AuthenticationResponse;
 import soselab.easylearn.json.response.FBReponse;
 
