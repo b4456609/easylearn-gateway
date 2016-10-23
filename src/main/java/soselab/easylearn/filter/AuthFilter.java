@@ -2,63 +2,61 @@ package soselab.easylearn.filter;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
-import soselab.easylearn.entity.User;
-import soselab.easylearn.repository.UserRepository;
-import soselab.easylearn.security.TokenUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import soselab.easylearn.repository.UserRepository;
+import soselab.easylearn.security.TokenUtils;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 public class AuthFilter extends ZuulFilter {
 
-	private final Logger logger = Logger.getLogger(this.getClass());
+    private final Logger logger = Logger.getLogger(this.getClass());
 
-	@Value("${cerberus.token.header}")
-	private String tokenHeader;
+    @Value("${cerberus.token.header}")
+    private String tokenHeader;
 
-	@Autowired
-	private TokenUtils tokenUtils;
+    @Autowired
+    private TokenUtils tokenUtils;
 
-	@Autowired
-	private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-	@Override
-	public boolean shouldFilter() {
-		HttpServletRequest request = RequestContext.getCurrentContext().getRequest();
-		String path = request.getRequestURI().substring(request.getContextPath().length());
-		logger.info(path);
+    @Override
+    public boolean shouldFilter() {
+        HttpServletRequest request = RequestContext.getCurrentContext().getRequest();
+        String path = request.getRequestURI().substring(request.getContextPath().length());
+        logger.info(path);
 
-		if(path.startsWith("/easylearn/"))
-			return false;
+        if (path.startsWith("/easylearn/"))
+            return false;
 
-		return true;
-	}
+        return true;
+    }
 
-	@Override
-	public Object run() {
-		 logger.info(">auth");
-		 HttpServletRequest request = RequestContext.getCurrentContext().getRequest();
-		 String token = request.getHeader(this.tokenHeader);
-		 String id = this.tokenUtils.getUserIdFromToken(token);
+    @Override
+    public Object run() {
+        logger.info(">auth");
+        HttpServletRequest request = RequestContext.getCurrentContext().getRequest();
+        String token = request.getHeader(this.tokenHeader);
+        String id = this.tokenUtils.getUserIdFromToken(token);
+        logger.info(id);
 
-		 RequestContext.getCurrentContext().addZuulRequestHeader("user-id", id);
-		 logger.info(String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
+        RequestContext.getCurrentContext().addZuulRequestHeader("user-id", id);
+        logger.info(String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
 
-		logger.info("<auth");
-		return null;
-	}
+        logger.info("<auth");
+        return null;
+    }
 
-	@Override
-	public String filterType() {
-		return "pre";
-	}
+    @Override
+    public String filterType() {
+        return "pre";
+    }
 
-	@Override
-	public int filterOrder() {
-		return 1;
-	}
+    @Override
+    public int filterOrder() {
+        return 1;
+    }
 }
