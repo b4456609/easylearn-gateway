@@ -44,19 +44,9 @@ public class AuthFilter extends ZuulFilter {
 		 HttpServletRequest request = RequestContext.getCurrentContext().getRequest();
 		 String token = request.getHeader(this.tokenHeader);
 		 String id = this.tokenUtils.getUserIdFromToken(token);
-		 User user = userRepository.findById(id);
 
-		 if(user==null){
-		 	try {
-		 		RequestContext.getCurrentContext().getResponse().sendError(HttpServletResponse.SC_UNAUTHORIZED);
-		 	} catch (IOException e) {
-		 		// TODO Auto-generated catch block
-		 		e.printStackTrace();
-		 	}
-		 }
 		 RequestContext.getCurrentContext().addZuulRequestHeader("user-id", id);
 		 logger.info(String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
-		 logger.info(user.toString());
 
 		logger.info("<auth");
 		return null;
