@@ -32,7 +32,7 @@ public class AuthFilter extends ZuulFilter {
         logger.info(path);
 
         if (isTesting){
-            RequestContext.getCurrentContext().addZuulRequestHeader("user-id", "id");
+            RequestContext.getCurrentContext().addZuulRequestHeader("user-id", "1009840175700426");
             return false;
         }
 
