@@ -19,7 +19,7 @@ public class AuthFilter extends ZuulFilter {
     private String tokenHeader;
 
 
-    @Value("${easylearn.testing}")
+    @Value("${easylearn.isTest}")
     private boolean isTesting;
 
     @Autowired
